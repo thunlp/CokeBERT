@@ -2,7 +2,7 @@
 CokeBERT: Contextual Knowledge Selection and Embedding towards Enhanced Pre-Trained Language Models
 
 
-(https://github.com/CoolSheng/CokeBERT/blob/main/CokeBert.pdf)
+![Image of CokeBert](https://github.com/CoolSheng/CokeBERT/blob/main/CokeBert.pdf)
 
 ### Reqirements:
 - Pytorch>=0.4.1
