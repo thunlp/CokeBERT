@@ -42,6 +42,7 @@ mv data to DKPLM/data/data
 ```
 
 - Download base models for pre-training
+
 #Roberta
 ```
 roberta-base (Download roberta_base from Huggieface to DKPLM/data/bert_base)
@@ -68,7 +69,6 @@ Download kg_embed from and move to DKPLM/data/kg_embed
 python3 DKPLM/code/DKPLM_BERTbase/code/knowledge_bert/preprocess_n.py
 ```
 
-'''
 
 ### Pre-train
 #### DKPLM_BERTbase
