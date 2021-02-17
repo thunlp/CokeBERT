@@ -9,9 +9,11 @@ CokeBERT: Contextual Knowledge Selection and Embedding towards Enhanced Pre-Trai
         <p>The example of capturing knowledge contextfrom a KG and incorporating them for language understanding. Different sizes of circles express different entity importance for understanding the given sentence.</p>
     </embed>
 </object>
--->
 
 ![CokeBert](https://github.com/CoolSheng/CokeBERT/blob/main/CokeBert.jpg)
+-->
+
+<img src="https://github.com/CoolSheng/CokeBERT/blob/main/CokeBert.jpg" width="100" height="100">
 
 ### Reqirements:
 - Pytorch>=0.4.1
