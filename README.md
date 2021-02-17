@@ -59,14 +59,11 @@ python3 DKPLM/code/DKPLM_BERTbase/code/knowledge_bert/preprocess_n.py
 
 
 ### Pre-train
-#### DKPLM_BERTbase
+#### DKPLM_BERTbase/DKPLM_RoBERTabase
 ```
 cd DKPLM/code/DKPLM_BERTbase
 bash run_pretrain_2layer.sh
-```
 
-#### DKPLM_RoBERTabase
-```
 cd DKPLM/code/DKPLM_RoBERTabase
 bash run_pretrain_2layer.sh
 ```
@@ -80,23 +77,14 @@ DKPLM/data/DKPLM_BERTbase_2layer DKPLM/data/DKPLM_RoBERTabase_2layer
 cd DKPLM/code/DKPLM_RoBERTabase
 ```
 
-##### FewRel
+##### FewRel/Figer/Open Entity/TACRED
 ```
 bash run_fewrel_2layer.sh
-```
 
-##### Figer
-```
 bash run_figer_2layer.sh
-```
 
-##### Open Entity
-```
 bash run_open_2layer.sh
-```
 
-##### TACRED
-```
 bash run_tacred_2layer.sh
 ```
 
@@ -105,23 +93,14 @@ bash run_tacred_2layer.sh
 cd DKPLM/code/DKPLM_RoBERTabase
 ```
 
-##### FewRel
+##### FewRel/Figer/Open Entity/TACRED
 ```
 bash run_fewrel_2layer.sh
-```
 
-##### Figer
-```
 bash run_figer_2layer.sh
-```
 
-##### Open Entity
-```
 bash run_open_2layer.sh
-```
 
-##### TACRED
-```
 bash run_tacred_2layer.sh
 ```
 
