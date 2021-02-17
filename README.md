@@ -46,10 +46,12 @@ mv data to DKPLM/data/data
 ```
 roberta-base (Download roberta_base from Huggieface to DKPLM/data/bert_base)
 ```
+
 #Bert
 ```
 bert-base-uncased (Download bert_base from Huggieface to DKPLM/data/roberta_base)
 ```
+
 #ERNIE
 ```
 ernie_base (Download ernie_base from https://github.com/thunlp/ERNIE to DKPLM/data/ernie_base)
@@ -74,6 +76,7 @@ python3 DKPLM/code/DKPLM_BERTbase/code/knowledge_bert/preprocess_n.py
 cd DKPLM/code/DKPLM_BERTbase
 bash run_pretrain_2layer.sh
 ```
+
 #### DKPLM_RoBERTabase
 ```
 cd DKPLM/code/DKPLM_RoBERTabase
@@ -88,48 +91,50 @@ DKPLM/data/DKPLM_BERTbase_2layer DKPLM/data/DKPLM_RoBERTabase_2layer
 ```
 cd DKPLM/code/DKPLM_RoBERTabase
 ```
-	##### FewRel
+
+##### FewRel
 ```
-	bash run_fewrel_2layer.sh
+bash run_fewrel_2layer.sh
 ```
 
-	##### Figer
+##### Figer
 ```
-	bash run_figer_2layer.sh
-```
-
-	##### Open Entity
-```
-	bash run_open_2layer.sh
+bash run_figer_2layer.sh
 ```
 
-	##### TACRED
+##### Open Entity
 ```
-	bash run_tacred_2layer.sh
+bash run_open_2layer.sh
+```
+
+##### TACRED
+```
+bash run_tacred_2layer.sh
 ```
 
 #### DKPLM_RoBERTabase
 ```
 cd DKPLM/code/DKPLM_RoBERTabase
 ```
-	##### FewRel
+
+##### FewRel
 ```
-	bash run_fewrel_2layer.sh
+bash run_fewrel_2layer.sh
 ```
 
-	##### Figer
+##### Figer
 ```
-	bash run_figer_2layer.sh
-```
-
-	##### Open Entity
-```
-	bash run_open_2layer.sh
+bash run_figer_2layer.sh
 ```
 
-	##### TACRED
+##### Open Entity
 ```
-	bash run_tacred_2layer.sh
+bash run_open_2layer.sh
+```
+
+##### TACRED
+```
+bash run_tacred_2layer.sh
 ```
 
 
