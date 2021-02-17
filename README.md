@@ -108,6 +108,7 @@ cd DKPLM/code/DKPLM_RoBERTabase
 	##### TACRED
 	bash run_tacred_2layer.sh
 
+<!-- 
 ### Empirical Analysis
 #### DKPLM_BERTbase
 ```
@@ -146,3 +147,4 @@ cd DKPLM/code/DKPLM_RoBERTabase
 
 	###### DKPLM
 	bash analysis_tacred_DK.sh
+-->
