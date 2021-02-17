@@ -22,13 +22,12 @@ python3 setup.py install --user --cuda_ext --cpp_ext
 ### Prepare Pre-trained and Fine-tuned Data
 - We will provide dataset for pre-training. If you want to use the latest data, pleas follow the [ERNIE](https://github.com/thunlp/ERNIE "ERNIE") pipline to pre-process your data.
 After pre-process Pre-trained data, move them to the corresopinding dir
-
->BERT-base
+#BERT-base
 ```
 mv merge.bin DKPLM/data/pretrain_data_bert
 mv mergr.idx DKPLM/data/pretrain_data_bert
 ```
->RoBERTA-base
+#RoBERTA-base
 ```
 mv merge.bin DKPLM/data/pretrain_data_roberta
 mv mergr.idx DKPLM/data/pretrain_data_roberta
@@ -41,16 +40,15 @@ mv data to DKPLM/data/data
 ```
 
 - Download base models for pre-training
-
->Roberta
+#Roberta
 ```
 roberta-base (Download roberta_base from Huggieface to DKPLM/data/bert_base)
 ```
->Bert
+#Bert
 ```
 bert-base-uncased (Download bert_base from Huggieface to DKPLM/data/roberta_base)
 ```
->ERNIE
+#ERNIE
 ```
 ernie_base (Download ernie_base from https://github.com/thunlp/ERNIE to DKPLM/data/ernie_base)
 ```
@@ -87,6 +85,7 @@ DKPLM/data/DKPLM_BERTbase_2layer DKPLM/data/DKPLM_RoBERTabase_2layer
 #### DKPLM_BERTbase
 ```
 cd DKPLM/code/DKPLM_RoBERTabase
+```
 	##### FewRel
 ```
 	bash run_fewrel_2layer.sh
@@ -112,16 +111,24 @@ cd DKPLM/code/DKPLM_RoBERTabase
 cd DKPLM/code/DKPLM_RoBERTabase
 ```
 	##### FewRel
+```
 	bash run_fewrel_2layer.sh
+```
 
 	##### Figer
+```
 	bash run_figer_2layer.sh
+```
 
 	##### Open Entity
+```
 	bash run_open_2layer.sh
+```
 
 	##### TACRED
+```
 	bash run_tacred_2layer.sh
+```
 
 
 
