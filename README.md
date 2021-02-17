@@ -1,7 +1,7 @@
 # CokeBert
 CokeBERT: Contextual Knowledge Selection and Embedding towards Enhanced Pre-Trained Language Models
 
-
+<!--
 ![Image of CokeBert](https://github.com/CoolSheng/CokeBERT/blob/main/CokeBert.pdf)
 
 <object data="http://github.com/CoolSheng/CokeBert/blob/main/CokeBert.pdf" type="application/pdf" width="993px" height="548px">
@@ -9,6 +9,9 @@ CokeBERT: Contextual Knowledge Selection and Embedding towards Enhanced Pre-Trai
         <p>The example of capturing knowledge contextfrom a KG and incorporating them for language understanding. Different sizes of circles express different entity importance for understanding the given sentence.</p>
     </embed>
 </object>
+-->
+
+![CokeBert](https://github.com/CoolSheng/CokeBERT/blob/main/CokeBert.jpg)
 
 ### Reqirements:
 - Pytorch>=0.4.1
