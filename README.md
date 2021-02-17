@@ -27,10 +27,10 @@ After pre-process Pre-trained data, move them to the corresopinding dir
 ```
 mv merge.bin DKPLM/data/pretrain_data_bert
 mv mergr.idx DKPLM/data/pretrain_data_bert
-#RoBERTA-base
+>RoBERTA-base
+```
 mv merge.bin DKPLM/data/pretrain_data_roberta
 mv mergr.idx DKPLM/data/pretrain_data_roberta
-```
 
 - As most datasets except FewRel don not have entity annotations, we use the annotated dataset from ERNIE. Downlaod them from [data](https://cloud.tsinghua.edu.cn/f/32668247e4fd4f9789f2/?dl=1 "dataset") and save to the corresopinding dir.
 ```
@@ -39,12 +39,17 @@ mv data to DKPLM/data/data
 ```
 
 - Download base models for pre-training
+
+>Roberta
 ```
-#Roberta
 roberta-base (Download roberta_base from Huggieface to DKPLM/data/bert_base)
-#Bert
+```
+>Bert
+```
 bert-base-uncased (Download bert_base from Huggieface to DKPLM/data/roberta_base)
-#ERNIE
+```
+>ERNIE
+```
 ernie_base (Download ernie_base from https://github.com/thunlp/ERNIE to DKPLM/data/ernie_base)
 ```
 
