@@ -80,11 +80,8 @@ cd DKPLM/code/DKPLM_RoBERTabase
 ##### FewRel/Figer/Open Entity/TACRED
 ```
 bash run_fewrel_2layer.sh
-
 bash run_figer_2layer.sh
-
 bash run_open_2layer.sh
-
 bash run_tacred_2layer.sh
 ```
 
@@ -96,11 +93,8 @@ cd DKPLM/code/DKPLM_RoBERTabase
 ##### FewRel/Figer/Open Entity/TACRED
 ```
 bash run_fewrel_2layer.sh
-
 bash run_figer_2layer.sh
-
 bash run_open_2layer.sh
-
 bash run_tacred_2layer.sh
 ```
 
