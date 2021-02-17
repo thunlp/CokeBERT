@@ -2,7 +2,7 @@
 CokeBERT: Contextual Knowledge Selection and Embedding towards Enhanced Pre-Trained Language Models
 
 <p align="center">
-  <img width="460" height="300" src="CokeBert.pdf">
+  <img width="460" height="300" src="CokeBERT/CokeBert.pdf">
 </p>
 
 ### Reqirements:
