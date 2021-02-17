@@ -10,10 +10,11 @@ CokeBERT: Contextual Knowledge Selection and Embedding towards Enhanced Pre-Trai
     </embed>
 </object>
 
-![CokeBert](https://github.com/CoolSheng/CokeBERT/blob/main/CokeBert.jpg)
+<img src="https://github.com/CoolSheng/CokeBERT/blob/main/CokeBert.jpg" width="100" height="100">
 -->
 
-<img src="https://github.com/CoolSheng/CokeBERT/blob/main/CokeBert.jpg" width="100" height="100">
+![CokeBert](https://github.com/CoolSheng/CokeBERT/blob/main/CokeBert.jpg)
+
 
 ### Reqirements:
 - Pytorch>=0.4.1
