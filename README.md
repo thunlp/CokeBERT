@@ -1,5 +1,5 @@
 # CokeBert
-[CokeBERT: Contextual Knowledge Selection and Embedding towards Enhanced Pre-Trained Language Models](https://arxiv.org/pdf/2009.13964.pdf)
+[CokeBERT](https://arxiv.org/pdf/2009.13964.pdf): Contextual Knowledge Selection and Embedding towards Enhanced Pre-Trained Language Models
 
 <figure>
 <img src=https://github.com/CoolSheng/CokeBERT/blob/main/CokeBert.jpg width="80%">
