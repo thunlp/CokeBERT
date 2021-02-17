@@ -23,7 +23,7 @@ python3 setup.py install --user --cuda_ext --cpp_ext
 - We will provide dataset for pre-training. If you want to use the latest data, pleas follow the [ERNIE](https://github.com/thunlp/ERNIE "ERNIE") pipline to pre-process your data.
 After pre-process Pre-trained data, move them to the corresopinding dir
 ```
-#BERT-base
+>BERT-base
 mv merge.bin DKPLM/data/pretrain_data_bert
 mv mergr.idx DKPLM/data/pretrain_data_bert
 #RoBERTA-base
@@ -107,6 +107,10 @@ cd DKPLM/code/DKPLM_RoBERTabase
 
 	##### TACRED
 	bash run_tacred_2layer.sh
+
+
+
+
 
 <!-- 
 ### Empirical Analysis
