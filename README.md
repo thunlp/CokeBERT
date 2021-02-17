@@ -23,14 +23,11 @@ python3 setup.py install --user --cuda_ext --cpp_ext
 - We will provide dataset for pre-training. If you want to use the latest data, pleas follow the [ERNIE](https://github.com/thunlp/ERNIE "ERNIE") pipline to pre-process your data.
 After pre-process Pre-trained data, move them to the corresopinding dir
 
-#BERT-base
+>BERT-base/RoBERTA-base
 ```
 mv merge.bin DKPLM/data/pretrain_data_bert
 mv mergr.idx DKPLM/data/pretrain_data_bert
-```
 
-#RoBERTA-base
-```
 mv merge.bin DKPLM/data/pretrain_data_roberta
 mv mergr.idx DKPLM/data/pretrain_data_roberta
 ```
@@ -42,7 +39,7 @@ mv data to DKPLM/data/data
 ```
 
 - Download base models for pre-training
->Roberta Bert ERNIE
+>Roberta/Bert/ERNIE
 ```
 roberta-base (Download roberta_base from Huggieface to DKPLM/data/bert_base)
 bert-base-uncased (Download bert_base from Huggieface to DKPLM/data/roberta_base)
