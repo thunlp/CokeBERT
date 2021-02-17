@@ -42,21 +42,14 @@ mv data to DKPLM/data/data
 ```
 
 - Download base models for pre-training
-
 #Roberta
-```
 roberta-base (Download roberta_base from Huggieface to DKPLM/data/bert_base)
-```
 
 #Bert
-```
 bert-base-uncased (Download bert_base from Huggieface to DKPLM/data/roberta_base)
-```
 
 #ERNIE
-```
 ernie_base (Download ernie_base from https://github.com/thunlp/ERNIE to DKPLM/data/ernie_base)
-```
 
 - Knowledge Embedding (including entity and relation to id information)
 ```
