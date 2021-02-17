@@ -21,8 +21,12 @@ CokeBERT: Contextual Knowledge Selection and Embedding towards Enhanced Pre-Trai
 
 ![CokeBert](https://github.com/CoolSheng/CokeBERT/blob/main/CokeBert.jpg)
 -->
+
+<figure>
 <img src=https://github.com/CoolSheng/CokeBERT/blob/main/CokeBert.jpg width="80%">
-*Figure: The example of capturing knowledge contextfrom a KG and incorporating them for language understanding. Different sizes of circles express different entity importance for understanding the given sentence.*
+<figcaption>Figure: The example of capturing knowledge contextfrom a KG and incorporating them for language understanding. Different sizes of circles express different entity importance for understanding the given sentence.
+</figcaption>
+</figure>
 
 
 ### Reqirements:
