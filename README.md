@@ -85,18 +85,25 @@ DKPLM/data/DKPLM_BERTbase_2layer DKPLM/data/DKPLM_RoBERTabase_2layer
 #### DKPLM_BERTbase
 ```
 cd DKPLM/code/DKPLM_RoBERTabase
-```
 	##### FewRel
+```
 	bash run_fewrel_2layer.sh
+```
 
 	##### Figer
+```
 	bash run_figer_2layer.sh
+```
 
 	##### Open Entity
+```
 	bash run_open_2layer.sh
+```
 
 	##### TACRED
+```
 	bash run_tacred_2layer.sh
+```
 
 #### DKPLM_RoBERTabase
 ```
