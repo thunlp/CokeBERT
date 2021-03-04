@@ -2,7 +2,7 @@
 [CokeBERT](https://arxiv.org/pdf/2009.13964.pdf): Contextual Knowledge Selection and Embedding towards Enhanced Pre-Trained Language Models
 
 <figure>
-<img src=https://github.com/CoolSheng/CokeBERT/blob/main/CokeBert.jpg width="80%">
+<img src=https://github.com/thunlp/CokeBERT/blob/main/CokeBert.jpg width="80%">
 <figcaption>Figure: The example of capturing knowledge contextfrom a KG and incorporating them for language understanding. Different sizes of circles express different entity importance for understanding the given sentence.
 </figcaption>
 </figure>
