@@ -1,6 +1,9 @@
 # CokeBert
 [CokeBERT](https://arxiv.org/pdf/2009.13964.pdf): Contextual Knowledge Selection and Embedding towards Enhanced Pre-Trained Language Models
 
+
+## Overview
+
 <figure>
 <img src=https://github.com/thunlp/CokeBERT/blob/main/CokeBert.jpg width="80%">
 <figcaption>Figure: The example of capturing knowledge contextfrom a KG and incorporating them for language understanding. Different sizes of circles express different entity importance for understanding the given sentence.
@@ -9,7 +12,8 @@
 
 
 
-### Reqirements:
+## Reqirements:
+
 - Pytorch>=0.4.1
 - Python3
 - tqdm
@@ -27,7 +31,8 @@ python3 setup.py install --user --cuda_ext --cpp_ext
 ```
 
 
-### Prepare Pre-trained and Fine-tuned Data
+## Prepare Pre-trained and Fine-tuned Data
+
 - We will provide dataset for pre-training. If you want to use the latest data, pleas follow the [ERNIE](https://github.com/thunlp/ERNIE "ERNIE") pipline to pre-process your data.
 After pre-process Pre-trained data, move them to the corresopinding dir
 
@@ -66,8 +71,9 @@ python3 DKPLM/code/DKPLM_BERTbase/code/knowledge_bert/preprocess_n.py
 ```
 
 
-### Pre-train
-#### DKPLM_BERTbase/DKPLM_RoBERTabase
+## Pre-train
+
+### DKPLM_BERTbase/DKPLM_RoBERTabase
 ```
 cd DKPLM/code/DKPLM_BERTbase
 bash run_pretrain_2layer.sh
@@ -76,16 +82,16 @@ cd DKPLM/code/DKPLM_RoBERTabase
 bash run_pretrain_2layer.sh
 ```
 
-### Fine-tune
+## Fine-tune
 - After pre-training DKPLM model, move pytorch_model.bin to the corresponding dir
 DKPLM/data/DKPLM_BERTbase_2layer DKPLM/data/DKPLM_RoBERTabase_2layer
 
-#### DKPLM_BERTbase
+### DKPLM_BERTbase
 ```
 cd DKPLM/code/DKPLM_RoBERTabase
 ```
 
-##### FewRel/Figer/Open Entity/TACRED
+#### FewRel/Figer/Open Entity/TACRED
 ```
 bash run_fewrel_2layer.sh
 bash run_figer_2layer.sh
@@ -93,12 +99,12 @@ bash run_open_2layer.sh
 bash run_tacred_2layer.sh
 ```
 
-#### DKPLM_RoBERTabase
+### DKPLM_RoBERTabase
 ```
 cd DKPLM/code/DKPLM_RoBERTabase
 ```
 
-##### FewRel/Figer/Open Entity/TACRED
+#### FewRel/Figer/Open Entity/TACRED
 ```
 bash run_fewrel_2layer.sh
 bash run_figer_2layer.sh
@@ -150,3 +156,18 @@ cd DKPLM/code/DKPLM_RoBERTabase
 	###### DKPLM
 	bash analysis_tacred_DK.sh
 -->
+
+## Citation
+
+Please cite our paper if you use CokeBert in your work:
+```
+@article{SU2021,
+title = {CokeBERT: Contextual Knowledge Selection and Embedding towards Enhanced Pre-Trained Language Models},
+journal = {AI Open},
+year = {2021},
+issn = {2666-6510},
+doi = {https://doi.org/10.1016/j.aiopen.2021.06.004},
+url = {https://www.sciencedirect.com/science/article/pii/S2666651021000188},
+author = {Yusheng Su and Xu Han and Zhengyan Zhang and Yankai Lin and Peng Li and Zhiyuan Liu and Jie Zhou and Maosong Sun},
+}
+```
