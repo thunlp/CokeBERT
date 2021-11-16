@@ -176,6 +176,6 @@ journal = {AI Open},
 year = {2021},
 issn = {2666-6510},
 doi = {https://doi.org/10.1016/j.aiopen.2021.06.004},
-url = {https://www.sciencedirect.com/science/article/pii/S2666651021000188},
+url = {https://arxiv.org/abs/2009.13964},
 }
 ```
