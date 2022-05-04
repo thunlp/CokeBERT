@@ -164,14 +164,6 @@ Please cite our paper if you use CokeBert in your work:
 @article{SU2021,
 title = {CokeBERT: Contextual Knowledge Selection and Embedding towards Enhanced Pre-Trained Language Models},
 author = {Yusheng Su and Xu Han and Zhengyan Zhang and Yankai Lin and Peng Li and Zhiyuan Liu and Jie Zhou and Maosong Sun},
-journal = {Arxiv},
-year = {2020},
-url = {https://arxiv.org/abs/2009.13964},
-}
-
-@article{SU2021,
-title = {CokeBERT: Contextual Knowledge Selection and Embedding towards Enhanced Pre-Trained Language Models},
-author = {Yusheng Su and Xu Han and Zhengyan Zhang and Yankai Lin and Peng Li and Zhiyuan Liu and Jie Zhou and Maosong Sun},
 journal = {AI Open},
 year = {2021},
 issn = {2666-6510},
