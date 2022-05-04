@@ -1,9 +1,11 @@
 # CokeBert
 [CokeBERT](https://arxiv.org/pdf/2009.13964.pdf): Contextual Knowledge Selection and Embedding towards Enhanced Pre-Trained Language Models
 
+## Contact
+Yusheng Su 
+Mail: yushengsu.thu@gmail.com; suys19@mauls.tsinghua.edu.cn
 
 ## Overview
-
 <figure>
 <img src=https://github.com/thunlp/CokeBERT/blob/main/CokeBert.jpg width="80%">
 <figcaption>Figure: The example of capturing knowledge contextfrom a KG and incorporating them for language understanding. Different sizes of circles express different entity importance for understanding the given sentence.
@@ -81,6 +83,8 @@ bash run_pretrain_2layer.sh
 cd DKPLM/code/DKPLM_RoBERTabase
 bash run_pretrain_2layer.sh
 ```
+You could also directly download the pre-trained CokeBert from here: [Checkpoints](https://drive.google.com/file/d/1Ce7Nq7vJ83l4lOV9SiiN2Kq831z_phsV/view?usp=sharing)
+
 
 ## Fine-tune
 - After pre-training DKPLM model, move pytorch_model.bin to the corresponding dir
