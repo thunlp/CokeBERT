@@ -1,9 +1,6 @@
 # CokeBert
 [CokeBERT](https://arxiv.org/pdf/2009.13964.pdf): Contextual Knowledge Selection and Embedding towards Enhanced Pre-Trained Language Models
 
-## Contact
-Yusheng Su 
-Mail: yushengsu.thu@gmail.com; suys19@mauls.tsinghua.edu.cn
 
 ## Overview
 <figure>
@@ -175,3 +172,7 @@ doi = {https://doi.org/10.1016/j.aiopen.2021.06.004},
 url = {https://arxiv.org/abs/2009.13964},
 }
 ```
+
+## Contact
+Yusheng Su 
+Mail: yushengsu.thu@gmail.com; suys19@mauls.tsinghua.edu.cn
