@@ -1,5 +1,5 @@
 # CokeBert
-[CokeBERT](https://arxiv.org/pdf/2009.13964.pdf): Contextual Knowledge Selection and Embedding towards Enhanced Pre-Trained Language Models
+[CokeBERT](https://arxiv.org/abs/2009.13964): Contextual Knowledge Selection and Embedding towards Enhanced Pre-Trained Language Models
 
 
 ## Overview
