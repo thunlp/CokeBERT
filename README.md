@@ -1,9 +1,9 @@
 # CokeBert
 [CokeBERT](https://arxiv.org/abs/2009.13964): Contextual Knowledge Selection and Embedding towards Enhanced Pre-Trained Language Models
 
-EMNLP-Findings 2020 Accepted.
+- EMNLP-Findings 2020 Accepted.
 
-AI-Open 2021 Accepted.
+- AI-Open 2021 Accepted.
 
 
 ## Overview
