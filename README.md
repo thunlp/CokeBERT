@@ -22,8 +22,8 @@
 - pytorch 1.2.0
 - gcc 7.5.0
 - Apex
-(If you want to use fp16, you MUST make sure the commit is 880ab925bce9f817a93988b021e12db5f67f7787. We have already provide this version apex in our source code)
-Your must use the enviroment and excute as the following:
+(If you want to use fp16, you <strong>MUST</strong> make sure the apex commit is 880ab925bce9f817a93988b021e12db5f67f7787.)
+We have already provide this version apex in our source code. Please follow the instructions as below:
 ```
 cd apex
 python3 setup.py install --user --cuda_ext --cpp_ext
