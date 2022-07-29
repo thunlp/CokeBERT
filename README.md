@@ -48,9 +48,8 @@ mv merge.bin DKPLM/data/pretrain_data_roberta
 mv mergr.idx DKPLM/data/pretrain_data_roberta
 ```
 
-- As most datasets except FewRel don not have entity annotations, we use the annotated dataset from ERNIE. Downlaod them from [data](https://cloud.tsinghua.edu.cn/f/32668247e4fd4f9789f2/?dl=1 "dataset") and save to the corresopinding dir.
+- As most datasets except FewRel don not have entity annotations, we use the annotated dataset from ERNIE. Downlaod them from [data](https://drive.google.com/file/d/1HlWw7Q6-dFSm9jNSCh4VaBf1PlGqt9im/view). Then, please unzip and save them (data) to the corresopinding dir.
 ```
-wget -O data https://cloud.tsinghua.edu.cn/f/32668247e4fd4f9789f2/?dl=1
 mv data to DKPLM/data/data
 ```
 
