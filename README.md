@@ -14,6 +14,9 @@
 </figure>
 
 
+## Todo
+- [x] Coke-Bert
+- [ ] Coke-Roberta
 
 ## Reqirements:
 
@@ -33,133 +36,93 @@ cd apex
 python3 setup.py install --user --cuda_ext --cpp_ext
 ```
 
+## Example
+```python
+from coke import CokeBertForPreTraining
 
-## Prepare Pre-trained and Fine-tuned Data
-
-- We will provide dataset for pre-training. If you want to use the latest data, pleas follow the [ERNIE](https://github.com/thunlp/ERNIE "ERNIE") pipline to pre-process your data.
-After pre-process Pre-trained data, move them to the corresopinding dir
-
->BERT-base/RoBERTA-base
-```
-mv merge.bin DKPLM/data/pretrain_data_bert
-mv mergr.idx DKPLM/data/pretrain_data_bert
-
-mv merge.bin DKPLM/data/pretrain_data_roberta
-mv mergr.idx DKPLM/data/pretrain_data_roberta
+model = CokeBertForPreTraining.from_pretrained('checkpoint/coke-bert-base-uncased', neighbor_hop=2)
 ```
 
-- As most datasets except FewRel don not have entity annotations, we use the annotated dataset from ERNIE. Downlaod them from [data](https://drive.google.com/file/d/1HlWw7Q6-dFSm9jNSCh4VaBf1PlGqt9im/view). Then, please unzip and save them (data) to the corresopinding dir.
-```
-mv data to DKPLM/data/data
+## Prepare Pre-train Data
+
+- Go to the folder for the latest version. Choose a backbone model, e.g. `bert-base-uncased`
+```bash
+cd CokeBert-2.0-latest
 ```
 
-- Download base models for pre-training
->Roberta/Bert/ERNIE
-```
-roberta-base (Download roberta_base from Huggieface to DKPLM/data/bert_base)
-bert-base-uncased (Download bert_base from Huggieface to DKPLM/data/roberta_base)
-ernie_base (Download ernie_base from https://github.com/thunlp/ERNIE to DKPLM/data/ernie_base)
+- We will provide dataset for pre-training. If you want to use the latest data, pleas follow the [ERNIE](https://github.com/thunlp/ERNIE "ERNIE") pipline to pre-process your data, using the corresponding tokenizer of the backbone model. The outputs are `merbe.bin` and `merge.idx`. After pre-process Pre-trained data, move them to the corresopinding directory.
+
+```bash
+export BACKBONE=bert-base-uncased
+export HOP=2
+
+mkdir data/pretrain/$BACKBONE
+
+mv merge.bin data/pretrain/$BACKBONE
+mv mergr.idx data/pretrain/$BACKBONE
 ```
 
-- Knowledge Embedding (including entity and relation to id information)
-```
-Download kg_embed from and move to DKPLM/data/kg_embed
+- Download the backbone model checkpoint from [Huggingface](https://huggingface.co/models), and move it to the corresponding checkpoint folder for pre-training. Note do not download the `config.json` for the backbone model, since we will be using the config of `coke`.
+
+```bash
+wget https://huggingface.co/$BACKBONE/resolve/main/vocab.txt -O checkpoint/coke-$BACKBONE/vocab.txt
+wget https://huggingface.co/$BACKBONE/resolve/main/pytorch_model.bin -O checkpoint/coke-$BACKBONE/pytorch_model.bin
 ```
 
+- Knowledge Embedding (including entity and relation to id information) and knowledge graph neighbor information from [here](https://drive.google.com/drive/folders/116FG9U-U4r674dgfBBL3qMceGXTTcaxc?usp=sharing). Put them in the `data/pretrain` folder and unzip them.
 
-- Generate Knowledge Graph Neighbors
+```bash
+cd data/pretrain
+
+# Download the files
+
+tar zxvf kg_embed.tar.gz
+tar zxvf kg_neighbor.tar.gz
+
+cd ../..
 ```
-python3 DKPLM/code/DKPLM_BERTbase/code/knowledge_bert/preprocess_n.py
+
+- (*Optional*) Generate Knowledge Graph Neighbors. We have provided this data. If you want to change the max number of neighbors, you can run this code to get the new `kg_neighbor` data
+```bash
+cd data/pretrain
+python3 preprocess_n.py
 ```
 
 
 ## Pre-train
 
-### DKPLM_BERTbase/DKPLM_RoBERTabase
+```bash
+cd examples
+bash run_pretrain.sh
 ```
-cd DKPLM/code/DKPLM_BERTbase
-bash run_pretrain_2layer.sh
 
-cd DKPLM/code/DKPLM_RoBERTabase
-bash run_pretrain_2layer.sh
+It will write log and checkpoint to `./outputs`. Check `src/coke/training_args.py` for more arguments.
+
+
+## Prepare Fine-tune Data
+- As most datasets except FewRel don not have entity annotations, we use the annotated dataset from ERNIE. Downlaod them from [data](https://drive.google.com/file/d/1HlWw7Q6-dFSm9jNSCh4VaBf1PlGqt9im/view). Then, please unzip and save them (data) to the corresopinding dir.
+
+```bash
+unzip data.zip -d data/finetune
 ```
-You could also directly download the pre-trained CokeBert from here: [Checkpoints](https://drive.google.com/file/d/1Ce7Nq7vJ83l4lOV9SiiN2Kq831z_phsV/view?usp=sharing)
 
 
 ## Fine-tune
-- After pre-training DKPLM model, move pytorch_model.bin to the corresponding dir
+- After pre-training the Coke model, move pytorch_model.bin to the corresponding dir
 DKPLM/data/DKPLM_BERTbase_2layer DKPLM/data/DKPLM_RoBERTabase_2layer
 
-### DKPLM_BERTbase
-```
-cd DKPLM/code/DKPLM_RoBERTabase
-```
+```bash
+export BACKBONE=bert-base-uncased
+export HOP=2
 
-#### FewRel/Figer/Open Entity/TACRED
-```
-bash run_fewrel_2layer.sh
-bash run_figer_2layer.sh
-bash run_open_2layer.sh
-bash run_tacred_2layer.sh
-```
-
-### DKPLM_RoBERTabase
-```
-cd DKPLM/code/DKPLM_RoBERTabase
+mv outputs/pretrain_coke-$BACKBONE-$HOP/pytorch_model.bin ../checkpoint/coke-$BACKBONE/pytorch_model.bin
 ```
 
 #### FewRel/Figer/Open Entity/TACRED
 ```
-bash run_fewrel_2layer.sh
-bash run_figer_2layer.sh
-bash run_open_2layer.sh
-bash run_tacred_2layer.sh
+bash run_finetune.sh
 ```
 
-
-
-
-
-<!-- 
-### Empirical Analysis
-#### DKPLM_BERTbase
-```
-cd DKPLM/code/DKPLM_RoBERTabase
-```
-##### FewRel
-	###### ERNIE
-	bash analysis_fewrel_ernie.sh
-
-	###### DKPLM
-	bash analysis_fewrel_DK.sh
-
-
-##### TACRED
-	###### ERNIE
-	bash analysis_tacred_ernie.sh
-
-	###### DKPLM
-	bash analysis_tacred_DK.sh
-
-
-#### DKPLM_RoBERTabase
-```
-cd DKPLM/code/DKPLM_RoBERTabase
-```
-##### FewRel
-	###### ERNIE
-	bash analysis_fewrel_ernie.sh
-
-	###### DKPLM
-	bash analysis_fewrel_DK.sh
-
-##### TACRED
-	###### ERNIE
-	bash analysis_tacred_ernie.sh
-
-	###### DKPLM
-	bash analysis_tacred_DK.sh
--->
 
 ## Citation
 
