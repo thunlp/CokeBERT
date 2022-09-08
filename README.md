@@ -15,9 +15,12 @@
 
 
 ## Version
-- [x] here
-- v1.0: [x] CokeBert, [x] CokeRoberta
-- v2.0: [x] CokeBert, [ ] CokeRoberta (will release soon)  
+#### v1.0
+- [x] CokeBert
+- [x] CokeRoberta
+#### v2.0
+- [x] CokeBert
+- [ ] CokeRoberta (will release soon)  
 
 ## Reqirements:
 - pytorch
