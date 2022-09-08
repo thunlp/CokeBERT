@@ -8,33 +8,30 @@
 
 ## Overview
 <figure>
-<img src=https://github.com/thunlp/CokeBERT/blob/main/CokeBert.jpg width="80%">
+<img src=https://github.com/thunlp/CokeBERT/blob/main/CokeBert-1.0/CokeBert.jpg width="80%">
 <figcaption>Figure: The example of capturing knowledge contextfrom a KG and incorporating them for language understanding. Different sizes of circles express different entity importance for understanding the given sentence.
 </figcaption>
 </figure>
 
 
-## Todo
-- [x] Coke-Bert
-- [ ] Coke-Roberta
+## Version
+- 1.0: [x] CokeBert, [x] CokeRoberta
+- 2.0: [x] CokeBert, [ ] CokeRoberta (will release soon)  
 
 ## Reqirements:
-
-- Pytorch>=0.4.1
-- Python3
+- pytorch
+- transformers
 - tqdm
 - boto3
 - requests
-- Python 3.6.9
-- pytorch 1.2.0
-- gcc 7.5.0
-- Apex
+<!--- Apex
 (If you want to use fp16, you <strong>MUST</strong> make sure the apex commit is 880ab925bce9f817a93988b021e12db5f67f7787.)
 We have already provide this version apex in our source code. Please follow the instructions as below:
 ```
 cd apex
 python3 setup.py install --user --cuda_ext --cpp_ext
 ```
+-->
 
 ## Example
 ```python

@@ -8,7 +8,7 @@
 
 ## Overview
 <figure>
-<img src=https://github.com/thunlp/CokeBERT/blob/main/CokeBert.jpg width="80%">
+<img src=https://github.com/thunlp/CokeBERT/blob/main/CokeBert-1.0/CokeBert.jpg width="80%">
 <figcaption>Figure: The example of capturing knowledge contextfrom a KG and incorporating them for language understanding. Different sizes of circles express different entity importance for understanding the given sentence.
 </figcaption>
 </figure>
