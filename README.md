@@ -37,14 +37,31 @@ python3 setup.py install --user --cuda_ext --cpp_ext
 ```
 -->
 
-## Example
+## How to Use
+- You need to download Knowledge Embedding (including entity and relation to id information) and knowledge graph neighbor information from [here](https://drive.google.com/drive/folders/116FG9U-U4r674dgfBBL3qMceGXTTcaxc?usp=sharing). Put them in the `data/pretrain` folder and unzip them.
+```bash
+cd data/pretrain
+
+# Download the files
+
+tar zxvf kg_embed.tar.gz
+tar zxvf kg_neighbor.tar.gz
+
+cd ../..
+```
+
+- Then, you could obtain pre-trained checkpoints from [here](https://huggingface.co/yushengsu/CokeBERT) and directly use CokeBert.
 ```python
 from coke import CokeBertForPreTraining
 
 model = CokeBertForPreTraining.from_pretrained('checkpoint/coke-bert-base-uncased', neighbor_hop=2)
 ```
 
-## Prepare Pre-train Data
+- If you want to pre-train CokeBert with different corpus and knowledge graphs, you could read the following instructions.
+
+## Pre-training
+
+### Prepare Pre-training Data
 
 - Go to the folder for the latest version. Choose a backbone model, e.g. `bert-base-uncased`
 ```bash
@@ -90,7 +107,7 @@ python3 preprocess_n.py
 ```
 
 
-## Pre-train
+### Excute Pre-training
 
 ```bash
 cd examples
@@ -100,15 +117,17 @@ bash run_pretrain.sh
 It will write log and checkpoint to `./outputs`. Check `src/coke/training_args.py` for more arguments.
 
 
-## Prepare Fine-tune Data
+
+## Fine-tuning 
+
+### Fine-tuning Data
 - As most datasets except FewRel don not have entity annotations, we use the annotated dataset from ERNIE. Downlaod them from [data](https://drive.google.com/file/d/1HlWw7Q6-dFSm9jNSCh4VaBf1PlGqt9im/view). Then, please unzip and save them (data) to the corresopinding dir.
 
 ```bash
 unzip data.zip -d data/finetune
 ```
 
-
-## Fine-tune
+### Excute Fine-tuning
 - After pre-training the Coke model, move pytorch_model.bin to the corresponding dir
 DKPLM/data/DKPLM_BERTbase_2layer DKPLM/data/DKPLM_RoBERTabase_2layer
 
