@@ -57,7 +57,7 @@ from coke import CokeBertForPreTraining
 model = CokeBertForPreTraining.from_pretrained('checkpoint/coke-bert-base-uncased', neighbor_hop=2)
 ```
 
-- If you want to pre-train CokeBert with different corpus and knowledge graphs, you could read the following instructions.
+If you want to pre-train CokeBert with different corpus and knowledge graphs, you could read the following instructions.
 
 ## Pre-training
 
