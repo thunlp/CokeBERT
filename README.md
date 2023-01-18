@@ -14,13 +14,13 @@
 </figure>
 
 
-## Version
+## Code Version
 #### v1.0
 - [x] CokeBert
 - [x] CokeRoberta
 #### v2.0
 - [x] CokeBert
-- [ ] CokeRoberta (will release soon)  
+- [x] CokeRoberta (will release soon)  
 
 ## Reqirements:
 - pytorch
