@@ -15,22 +15,31 @@
 
 
 ## Code Version
+- [CokeBert-1.0](https://github.com/thunlp/CokeBERT/tree/main/CokeBert-1.0) provides the original codes and details to reproduce the results in the paper.
+- [CokeBert-2.0-latest](https://github.com/thunlp/CokeBERT) refactors the CokeBert-1.0 and provides more user-friendly codes for users. In this `README.md`, we mainly demostrate the usage of the `CokeBert-2.0-latest`.  
+
+
+<!--
 #### v1.0
 - [x] CokeBert
 - [x] CokeRoberta
 #### v2.0
 - [x] CokeBert
 - [x] CokeRoberta (will release soon)  
+-->
 
 ## Reqirements
+- python==3.8
+<!--
 - python>=3.8
 - torch>=1.9.0
 - transformers>=4.10
+-->
 
 Please install all required packages by running
 
 ```bash
-pip install -r requirements.txt
+bash requirements.sh
 ```
 
 ## Data preparation
