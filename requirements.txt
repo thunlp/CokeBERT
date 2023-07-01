@@ -1,1 +1,3 @@
 transformers==4.10
+simplejson
+numpy==1.23.3
