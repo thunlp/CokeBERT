@@ -22,25 +22,16 @@
 - [x] CokeBert
 - [x] CokeRoberta (will release soon)  
 
-## Reqirements:
-- pytorch
-- transformers
-- tqdm
-- boto3
-- requests
+## Reqirements
+- python>=3.8
+- torch>=1.9.0
+- transformers>=4.10
 
+Please install all required packages by running
 
-## Quick example
-You can download the pre-trained Coke model checkpoint and start using it in python. For example, the following code loads a 2-hop Coke `Bert-base` model
-
-```python
-from coke import CokeBertForPreTraining
-
-model = CokeBertForPreTraining.from_pretrained('checkpoint/coke-bert-base-uncased', neighbor_hop=2)
+```bash
+pip install -r requirements.txt
 ```
-
-If you want to do pre-training or fine-tuning, please read the following sections.
-
 
 ## Data preparation
 #### Pre-training Data
@@ -100,12 +91,23 @@ As most datasets except FewRel do not have entity annotations, we use the annota
 unzip data.zip -d data/finetune
 ```
 
+## Use pre-trained Coke checkpoint
 
-## Pre-training
-You can directly obtain the pre-trained checkpoints from [here](https://huggingface.co/yushengsu/CokeBERT) or pre-train your own Coke model. If you download the pre-trained checkpoint, please skip this section. If you want to run pre-training, you can run the following commands
+You can download the pre-trained Coke checkpoints from [here](https://huggingface.co/yushengsu/CokeBERT) and start using it in python. For example, the following code loads a 2-hop Coke `Bert-base` model (also in `CokeBert-2.0-latest/examples/run_finetune.py`)
+
+```python
+from coke import CokeBertModel
+
+model = CokeBertModel.from_pretrained('yushengsu/coke-bert-base-uncased-2hop')
+
+# Do something with the model
+```
+
+## Pre-train from scratch
+If you want to run pre-training on your own, please first prepare the pre-training data. Then run the following commands (also in `CokeBert-2.0-latest/examples/run_pretrain.sh`)
 
 ```bash
-cd examples
+cd CokeBert-2.0-latest/examples
 export BACKBONE=bert-base-uncased
 export HOP=2
 export PYTHONPATH=../src:$PYTHONPATH
@@ -123,25 +125,20 @@ python run_pretrain.py \
             --self_att
 ```
 
-It will write log and checkpoint to `./outputs`. Check `src/coke/training_args.py` for more arguments.
+It will write log and checkpoint to `./outputs`. Check `CokeBert-2.0-latest/src/coke/training_args.py` for more arguments.
 
 
 ## Fine-tuning 
-
-Move the pre-trained Coke model checkpoint file `pytorch_model.bin` to the corresponding dir, such as `DKPLM/data/DKPLM_BERTbase_2layer` for 2-hop `Bert-base` model and `DKPLM/data/DKPLM_RoBERTabase_2layer` for 2-hop `Roberta-base` model.
+If you want to fine-tune Coke model on downstream tasks, please first prepare the fine-tuning data. Then move the pre-trained Coke model checkpoint file `pytorch_model.bin` to the corresponding dir, such as `DKPLM/data/DKPLM_BERTbase_2layer` for 2-hop `Bert-base` model and `DKPLM/data/DKPLM_RoBERTabase_2layer` for 2-hop `Roberta-base` model.
 
 ```bash
 mv outputs/pretrain_coke-$BACKBONE-$HOP/pytorch_model.bin ../checkpoint/coke-$BACKBONE/pytorch_model.bin
 ```
 
-Then start fine-tuning. We support the following datasets so far
-- FewRel
-- Figer
-- Open Entity
-- TACRED
+Then start fine-tuning by running the following commands (also in `CokeBert-2.0-latest/examples/run_finetune.sh`)
 
 ```bash
-cd examples
+cd CokeBert-2.0-latest/examples
 export BACKBONE=bert-base-uncased
 export HOP=2
 export PYTHONPATH=../src:$PYTHONPATH
@@ -161,8 +158,13 @@ python3 run_finetune.py \
             --K_V_dim 100 \
             --Q_dim 768 \
             --self_att
-
 ```
+
+Currently we support the following datasets
+- FewRel
+- Figer
+- Open Entity
+- TACRED
 
 
 ## Citation
