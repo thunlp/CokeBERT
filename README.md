@@ -22,53 +22,31 @@
 - [x] CokeBert
 - [x] CokeRoberta (will release soon)  
 
-## Reqirements:
-- pytorch
-- transformers
-- tqdm
-- boto3
-- requests
-<!--- Apex
-(If you want to use fp16, you <strong>MUST</strong> make sure the apex commit is 880ab925bce9f817a93988b021e12db5f67f7787.)
-We have already provide this version apex in our source code. Please follow the instructions as below:
-```
-cd apex
-python3 setup.py install --user --cuda_ext --cpp_ext
-```
--->
+## Reqirements
+- python>=3.8
+- torch>=1.9.0
+- transformers>=4.10
 
-## How to Use
-- You need to download Knowledge Embedding (including entity and relation to id information) and knowledge graph neighbor information from [here](https://drive.google.com/drive/folders/116FG9U-U4r674dgfBBL3qMceGXTTcaxc?usp=sharing). Put them in the `data/pretrain` folder and unzip them.
+Please install all required packages by running
+
 ```bash
-cd data/pretrain
-
-# Download the files
-
-tar zxvf kg_embed.tar.gz
-tar zxvf kg_neighbor.tar.gz
-
-cd ../..
+pip install -r requirements.txt
 ```
 
-- Then, you could obtain pre-trained checkpoints from [here](https://huggingface.co/yushengsu/CokeBERT) and directly use CokeBert.
-```python
-from coke import CokeBertForPreTraining
+## Data preparation
+#### Pre-training Data
 
-model = CokeBertForPreTraining.from_pretrained('checkpoint/coke-bert-base-uncased', neighbor_hop=2)
-```
+Skip this section if you do not want to do pre-training on your own.
 
-If you want to pre-train CokeBert with different corpus and knowledge graphs, you could read the following instructions.
-
-## Pre-training
-
-### Prepare Pre-training Data
-
-- Go to the folder for the latest version. Choose a backbone model, e.g. `bert-base-uncased`
+Go to the folder for the latest version. Choose a backbone model, e.g. `bert-base-uncased`
 ```bash
 cd CokeBert-2.0-latest
 ```
 
-- We will provide dataset for pre-training. If you want to use the latest data, pleas follow the [ERNIE](https://github.com/thunlp/ERNIE "ERNIE") pipline to pre-process your data, using the corresponding tokenizer of the backbone model. The outputs are `merbe.bin` and `merge.idx`. After pre-process Pre-trained data, move them to the corresopinding directory.
+Pleas follow the [ERNIE](https://github.com/thunlp/ERNIE "ERNIE") pipline to pre-process your data, using the corresponding tokenizer of the backbone model. The outputs are `merbe.bin` and `merge.idx`. 
+
+
+After pre-process Pre-trained data, move them to the corresopinding directory.
 
 ```bash
 export BACKBONE=bert-base-uncased
@@ -80,19 +58,17 @@ mv merge.bin data/pretrain/$BACKBONE
 mv mergr.idx data/pretrain/$BACKBONE
 ```
 
-- Download the backbone model checkpoint from [Huggingface](https://huggingface.co/models), and move it to the corresponding checkpoint folder for pre-training. Note do not download the `config.json` for the backbone model, since we will be using the config of `coke`.
+Download the backbone model checkpoint from [Huggingface](https://huggingface.co/models), and move it to the corresponding checkpoint folder for pre-training. Note do not download the `config.json` for the backbone model, since we will be using the config of `coke`.
 
 ```bash
 wget https://huggingface.co/$BACKBONE/resolve/main/vocab.txt -O checkpoint/coke-$BACKBONE/vocab.txt
 wget https://huggingface.co/$BACKBONE/resolve/main/pytorch_model.bin -O checkpoint/coke-$BACKBONE/pytorch_model.bin
 ```
 
-- Knowledge Embedding (including entity and relation to id information) and knowledge graph neighbor information from [here](https://drive.google.com/drive/folders/116FG9U-U4r674dgfBBL3qMceGXTTcaxc?usp=sharing). Put them in the `data/pretrain` folder and unzip them.
+Download the Knowledge Embedding (including entity and relation to id information) and knowledge graph neighbor information from [here](https://drive.google.com/drive/folders/116FG9U-U4r674dgfBBL3qMceGXTTcaxc?usp=sharing). Put them in the `data/pretrain` folder and unzip them.
 
 ```bash
 cd data/pretrain
-
-# Download the files
 
 tar zxvf kg_embed.tar.gz
 tar zxvf kg_neighbor.tar.gz
@@ -100,48 +76,95 @@ tar zxvf kg_neighbor.tar.gz
 cd ../..
 ```
 
-- (*Optional*) Generate Knowledge Graph Neighbors. We have provided this data. If you want to change the max number of neighbors, you can run this code to get the new `kg_neighbor` data
+(*Optional*) Generate Knowledge Graph Neighbors. We have provided this data. If you want to change the max number of neighbors, you can run this code to get the new `kg_neighbor` data
 ```bash
 cd data/pretrain
 python3 preprocess_n.py
 ```
 
 
-### Excute Pre-training
+#### Fine-tuning data
 
-```bash
-cd examples
-bash run_pretrain.sh
-```
-
-It will write log and checkpoint to `./outputs`. Check `src/coke/training_args.py` for more arguments.
-
-
-
-## Fine-tuning 
-
-### Fine-tuning Data
-- As most datasets except FewRel don not have entity annotations, we use the annotated dataset from ERNIE. Downlaod them from [data](https://drive.google.com/file/d/1HlWw7Q6-dFSm9jNSCh4VaBf1PlGqt9im/view). Then, please unzip and save them (data) to the corresopinding dir.
+As most datasets except FewRel do not have entity annotations, we use the annotated dataset from ERNIE. Downlaod them from [data](https://drive.google.com/file/d/1HlWw7Q6-dFSm9jNSCh4VaBf1PlGqt9im/view). Then, please unzip and save them (data) to the corresopinding dir.
 
 ```bash
 unzip data.zip -d data/finetune
 ```
 
-### Excute Fine-tuning
-- After pre-training the Coke model, move pytorch_model.bin to the corresponding dir
-DKPLM/data/DKPLM_BERTbase_2layer DKPLM/data/DKPLM_RoBERTabase_2layer
+## Use pre-trained Coke checkpoint
+
+You can download the pre-trained Coke checkpoints from [here](https://huggingface.co/yushengsu/CokeBERT) and start using it in python. For example, the following code loads a 2-hop Coke `Bert-base` model (also in `CokeBert-2.0-latest/examples/run_finetune.py`)
+
+```python
+from coke import CokeBertModel
+
+model = CokeBertModel.from_pretrained('yushengsu/coke-bert-base-uncased-2hop')
+
+# Do something with the model
+```
+
+## Pre-train from scratch
+If you want to run pre-training on your own, please first prepare the pre-training data. Then run the following commands (also in `CokeBert-2.0-latest/examples/run_pretrain.sh`)
 
 ```bash
+cd CokeBert-2.0-latest/examples
 export BACKBONE=bert-base-uncased
 export HOP=2
+export PYTHONPATH=../src:$PYTHONPATH
 
+python run_pretrain.py \
+            --output_dir outputs \
+            --data_dir ../data/pretrain \
+            --backbone $BACKBONE \
+            --neighbor_hop $HOP \
+            --do_train \
+            --max_seq_length 256 \
+            --K_V_dim 100 \
+            --Q_dim 768 \
+            --train_batch_size 32 \
+            --self_att
+```
+
+It will write log and checkpoint to `./outputs`. Check `CokeBert-2.0-latest/src/coke/training_args.py` for more arguments.
+
+
+## Fine-tuning 
+If you want to fine-tune Coke model on downstream tasks, please first prepare the fine-tuning data. Then move the pre-trained Coke model checkpoint file `pytorch_model.bin` to the corresponding dir, such as `DKPLM/data/DKPLM_BERTbase_2layer` for 2-hop `Bert-base` model and `DKPLM/data/DKPLM_RoBERTabase_2layer` for 2-hop `Roberta-base` model.
+
+```bash
 mv outputs/pretrain_coke-$BACKBONE-$HOP/pytorch_model.bin ../checkpoint/coke-$BACKBONE/pytorch_model.bin
 ```
 
-#### FewRel/Figer/Open Entity/TACRED
+Then start fine-tuning by running the following commands (also in `CokeBert-2.0-latest/examples/run_finetune.sh`)
+
+```bash
+cd CokeBert-2.0-latest/examples
+export BACKBONE=bert-base-uncased
+export HOP=2
+export PYTHONPATH=../src:$PYTHONPATH
+
+python3 run_finetune.py \
+            --output_dir outputs \
+            --do_train \
+            --do_lower_case \
+            --data_dir ../data/finetune/fewrel/ \
+            --backbone $BACKBONE \
+            --neighbor_hop $HOP \
+            --max_seq_length 256 \
+            --train_batch_size 64 \
+            --learning_rate 2e-5 \
+            --num_train_epochs 16 \
+            --loss_scale 128 \
+            --K_V_dim 100 \
+            --Q_dim 768 \
+            --self_att
 ```
-bash run_finetune.sh
-```
+
+Currently we support the following datasets
+- FewRel
+- Figer
+- Open Entity
+- TACRED
 
 
 ## Citation
