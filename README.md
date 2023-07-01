@@ -97,8 +97,10 @@ python3 preprocess_n.py
 As most datasets except FewRel do not have entity annotations, we use the annotated dataset from ERNIE. Downlaod them from [data1](https://drive.google.com/file/d/1HlWw7Q6-dFSm9jNSCh4VaBf1PlGqt9im/view) or [data2](https://cloud.tsinghua.edu.cn/f/3036fa28168c4fb7a320/?dl=1). Then, please unzip and save them (data) to the corresopinding dir.
 
 ```bash
+cd CokeBert-2.0-latest/data
 wget https://cloud.tsinghua.edu.cn/f/3036fa28168c4fb7a320/?dl=1 
-unzip data.zip -d data/finetune
+mv 'index.html?dl=1' data.zip
+tar -xvf data.zip finetune
 ```
 
 ## Use pre-trained Coke checkpoint
