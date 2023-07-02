@@ -188,7 +188,7 @@ export BACKBONE=$BACKBONE
 # BACKBONE can be `bert-base-uncased`, `roberta-base`, etc.
 export HOP=2
 export PYTHONPATH=../src:$PYTHONPATH
-$DATASET=DATASET
+DATASET=DATASET
 # $DATASET can be `FIGER`, `OpenEntity`, `fewrel`, `tacred`
 
 python3 run_finetune.py \
