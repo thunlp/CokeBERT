@@ -54,11 +54,11 @@ cd CokeBert-2.0-latest
 ```
 
 #### Step1
-Please follow the [ERNIE](https://github.com/thunlp/ERNIE "ERNIE") pipline to pre-process your pre-training data. Note that you need to dicide the backbone model and utilize its corresponding tokenizer to process the data. Coke framework supports two series of models (`BERT` and `RoBERTa`) currently. Then, you will obtain `merbe.bin` and `merge.idx` and move them to the following directories.
+Please follow the [ERNIE](https://github.com/thunlp/ERNIE "ERNIE") pipline to pre-process your pre-training data. Note that you need to decide the backbone model and utilize its corresponding tokenizer to process the data. Coke framework supports two series of models (`BERT` and `RoBERTa`) currently. Then, you will obtain `merbe.bin` and `merge.idx` and move them to the following directories.
 
 ```bash
-export BACKBONE=BACKBONE
-# For example: export BACKBONE=bert-base-uncased
+# BACKBONE can be `bert-base-uncased`, `roberta-base`, `bert-large-uncased`, `roberta-large`
+export BACKBONE=bert-base-uncased
 export HOP=2
 
 mkdir data/pretrain/$BACKBONE
@@ -70,8 +70,8 @@ mv mergr.idx data/pretrain/$BACKBONE
 #### Step2
 Download the backbone model checkpoints from [Huggingface](https://huggingface.co/models), and move them to the corresponding checkpoint folder for pre-training. Note you do not download the `config.json`, since we create new config for `coke`.
 ```bash
-$BACKBONE=BACKBONE
-# For example: BACKBONE can be `bert-base-uncased`, `roberta-base`
+# BACKBONE can be `bert-base-uncased`, `roberta-base`, `bert-large-uncased`, `roberta-large`
+BACKBONE=BACKBONE
 
 wget https://huggingface.co/$BACKBONE/resolve/main/vocab.txt -O checkpoint/coke-$BACKBONE/vocab.txt
 wget https://huggingface.co/$BACKBONE/resolve/main/pytorch_model.bin -O checkpoint/coke-$BACKBONE/pytorch_model.bin
