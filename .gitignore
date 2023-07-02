@@ -4,6 +4,10 @@ pytorch_model.bin
 wandb/
 outputs/
 
+CokeBert-2.0-latest/checkpoint/
+CokeBert-2.0-latest/data/pretrain/kg_embed*
+CokeBert-2.0-latest/data/pretrain/kg_neighbor*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

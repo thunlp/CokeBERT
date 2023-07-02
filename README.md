@@ -74,7 +74,7 @@ wget https://huggingface.co/$BACKBONE/resolve/main/vocab.txt -O checkpoint/coke-
 wget https://huggingface.co/$BACKBONE/resolve/main/pytorch_model.bin -O checkpoint/coke-$BACKBONE/pytorch_model.bin
 ```
 
-Download the Knowledge Embedding (including entity and relation to id information) and knowledge graph neighbor information from [here](https://drive.google.com/drive/folders/116FG9U-U4r674dgfBBL3qMceGXTTcaxc?usp=sharing). Put them in the `data/pretrain` folder and unzip them.
+Download the Knowledge Embedding (including entity and relation to id information) and knowledge graph neighbor information from [here1](https://drive.google.com/drive/folders/116FG9U-U4r674dgfBBL3qMceGXTTcaxc?usp=sharing) or [here2](https://cloud.tsinghua.edu.cn/d/dd92eb793c224cea8ec9/). Put them in the `data/pretrain` folder and unzip them.
 
 ```bash
 cd data/pretrain
@@ -94,7 +94,7 @@ python3 preprocess_n.py
 
 #### Fine-tuning data
 
-As most datasets except FewRel do not have entity annotations, we use the annotated dataset from ERNIE. Downlaod them from [data1](https://drive.google.com/file/d/1HlWw7Q6-dFSm9jNSCh4VaBf1PlGqt9im/view) or [data2](https://cloud.tsinghua.edu.cn/f/3036fa28168c4fb7a320/?dl=1). Then, please unzip and save them (data) to the corresopinding dir.
+As most datasets except FewRel do not have entity annotations, we use the annotated dataset from ERNIE. Downlaod them from [here1](https://drive.google.com/file/d/1HlWw7Q6-dFSm9jNSCh4VaBf1PlGqt9im/view) or [here2](https://cloud.tsinghua.edu.cn/f/3036fa28168c4fb7a320/?dl=1). Then, please unzip and save them (data) to the corresopinding dir.
 
 ```bash
 cd CokeBert-2.0-latest/data

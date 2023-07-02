@@ -1,9 +1,10 @@
 #!/bin/bash
 
 
-export BACKBONE=bert-base-uncased
-export HOP=2
+#export BACKBONE=bert-base-uncased
+export BACKBONE=bert-base-uncased-2hop
 export PYTHONPATH=../src:$PYTHONPATH
+export HOP=2
 
 rm outputs/finetune_coke-$BACKBONE-$HOP/*
 
