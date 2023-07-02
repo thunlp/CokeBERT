@@ -180,7 +180,7 @@ Open Entity
 TACRED
 -->
 
-Then start fine-tuning by running the following commands (Refer to `CokeBert-2.0-latest/examples/run_finetune.sh`).
+Then you can start fine-tuning by running the following commands (Refer to `CokeBert-2.0-latest/examples/run_finetune.sh`).
 ```bash
 cd CokeBert-2.0-latest
 bash example/run_finetune.sh
