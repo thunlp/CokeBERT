@@ -42,6 +42,32 @@ Please install all required packages by running
 bash requirements.sh
 ```
 
+
+
+##Pre-training
+If you want to use our pre-trained Coke models directly, you can ignore this section and skip to fine-tuning part.
+
+### Data preparation
+Please follow the [ERNIE](https://github.com/thunlp/ERNIE "ERNIE") pipline to pre-process your pre-training data. Note that you need to dicide the backbone model and utilize its corresponding tokenizer to process the data. Coke framework supports two series of models (`BERT` and `RoBERTa`) currently. Then, you will obtain `merbe.bin` and `merge.idx` and move them to the following directories.
+
+```bash
+export BACKBONE=BACKBONE
+# For example: export BACKBONE=bert-base-uncased
+export HOP=2
+
+mkdir data/pretrain/$BACKBONE
+
+mv merge.bin data/pretrain/$BACKBONE
+mv mergr.idx data/pretrain/$BACKBONE
+```
+
+
+
+
+
+
+<!--
+
 ## Data preparation
 #### Pre-training Data
 
@@ -66,6 +92,7 @@ mkdir data/pretrain/$BACKBONE
 mv merge.bin data/pretrain/$BACKBONE
 mv mergr.idx data/pretrain/$BACKBONE
 ```
+-->
 
 Download the backbone model checkpoint from [Huggingface](https://huggingface.co/models), and move it to the corresponding checkpoint folder for pre-training. Note do not download the `config.json` for the backbone model, since we will be using the config of `coke`.
 
