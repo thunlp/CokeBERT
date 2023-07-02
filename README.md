@@ -44,7 +44,7 @@ bash requirements.sh
 
 
 
-##Pre-training
+## Pre-training
 If you want to use our pre-trained Coke models directly, you can ignore this section and skip to fine-tuning part.
 
 ### Data preparation
