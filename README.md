@@ -48,7 +48,12 @@ bash requirements.sh
 If you want to use our pre-trained Coke models directly, you can ignore this section and skip to fine-tuning part.
 
 ### Data preparation
-####Step1
+Go to `CokeBert-2.0-latest`
+```bash
+cd CokeBert-2.0-latest
+```
+
+#### Step1
 Please follow the [ERNIE](https://github.com/thunlp/ERNIE "ERNIE") pipline to pre-process your pre-training data. Note that you need to dicide the backbone model and utilize its corresponding tokenizer to process the data. Coke framework supports two series of models (`BERT` and `RoBERTa`) currently. Then, you will obtain `merbe.bin` and `merge.idx` and move them to the following directories.
 
 ```bash
@@ -62,49 +67,22 @@ mv merge.bin data/pretrain/$BACKBONE
 mv mergr.idx data/pretrain/$BACKBONE
 ```
 
-####Step2
+#### Step2
 Download the backbone model checkpoints from [Huggingface](https://huggingface.co/models), and move them to the corresponding checkpoint folder for pre-training. Note you do not download the `config.json`, since we create new config for `coke`.
 ```bash
 $BACKBONE=BACKBONE
 # For example: BACKBONE can be `bert-base-uncased`, `roberta-base`
+
 wget https://huggingface.co/$BACKBONE/resolve/main/vocab.txt -O checkpoint/coke-$BACKBONE/vocab.txt
 wget https://huggingface.co/$BACKBONE/resolve/main/pytorch_model.bin -O checkpoint/coke-$BACKBONE/pytorch_model.bin
+
+mv vocab.txt $BACKBONE/
+mv pytorch_model.bin $BACKBONE/
+mv $BACKBONE checkpoint/
 ```
 
-
-<!--
-
-## Data preparation
-#### Pre-training Data
-
-Skip this section if you do not want to do pre-training on your own.
-
-Go to the folder for the latest version. Choose a backbone model, e.g. `bert-base-uncased`
-```bash
-cd CokeBert-2.0-latest
-```
-
-Pleas follow the [ERNIE](https://github.com/thunlp/ERNIE "ERNIE") pipline to pre-process your data, using the corresponding tokenizer of the backbone model. The outputs are `merbe.bin` and `merge.idx`. 
-
-
-After pre-process Pre-trained data, move them to the corresopinding directory.
-
-```bash
-export BACKBONE=bert-base-uncased
-export HOP=2
-
-mkdir data/pretrain/$BACKBONE
-
-mv merge.bin data/pretrain/$BACKBONE
-mv mergr.idx data/pretrain/$BACKBONE
-```
--->
-
-
-
-
-
-Download the Knowledge Embedding (including entity and relation to id information) and knowledge graph neighbor information from [here1](https://drive.google.com/drive/folders/116FG9U-U4r674dgfBBL3qMceGXTTcaxc?usp=sharing) or [here2](https://cloud.tsinghua.edu.cn/d/dd92eb793c224cea8ec9/). Put them in the `data/pretrain` folder and unzip them.
+#### Step3
+Download the Knowledge Embedding (including entity and relation to id information) and knowledge graph neighbor information from [here1](https://drive.google.com/drive/folders/116FG9U-U4r674dgfBBL3qMceGXTTcaxc?usp=sharing) or [here2](https://cloud.tsinghua.edu.cn/d/dd92eb793c224cea8ec9/). Move them to `data/pretrain` folder and unzip them.
 
 ```bash
 cd data/pretrain
@@ -118,11 +96,16 @@ rm -rf kg_neighbor
 cd ../..
 ```
 
-(*Optional*) Generate Knowledge Graph Neighbors. We have provided this data. If you want to change the max number of neighbors, you can run this code to get the new `kg_neighbor` data
+(*Optional*) If you want to generate knowledge graph neighbors by yourself, you can 
+run this code to get the new `kg_neighbor` data.
 ```bash
 cd data/pretrain
 python3 preprocess_n.py
 ```
+
+
+
+
 
 
 #### Fine-tuning data
