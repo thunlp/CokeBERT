@@ -104,13 +104,41 @@ python3 preprocess_n.py
 ```
 
 
+### Start to Train
+Go to examples and run the `run_pretrain.sh`.
+```bash
+cd example
+bash run_pretrain.sh
+```
+You can assign `BACKBONE` (backbone models) and `HOP` (the number of hop) in `run_pretrain.sh`.
+```bash
+export BACKBONE=BACKBONE
+# BACKBONE can be `bert-base-uncased`, `roberta-base`, etc
+export HOP=2
+export PYTHONPATH=../src:$PYTHONPATH
+
+rm outputs/pretrain_coke-$BACKBONE-$HOP/*
+
+python run_pretrain.py \
+            --output_dir outputs \
+            --data_dir ../data/pretrain \
+            --backbone $BACKBONE \
+            --neighbor_hop $HOP \
+            --do_train \
+            --max_seq_length 256 \
+            --K_V_dim 100 \
+            --Q_dim 768 \
+            --train_batch_size 32 \
+            --self_att
+```
 
 
 
+## Fine-tuning
 
-#### Fine-tuning data
 
-As most datasets except FewRel do not have entity annotations, we use the annotated dataset from ERNIE. Downlaod them from [here1](https://drive.google.com/file/d/1HlWw7Q6-dFSm9jNSCh4VaBf1PlGqt9im/view) or [here2](https://cloud.tsinghua.edu.cn/f/3036fa28168c4fb7a320/?dl=1). Then, please unzip and save them (data) to the corresopinding dir.
+### Data preparation
+We download the fine-tuning datasets and the coresponding annotations from [here1](https://drive.google.com/file/d/1HlWw7Q6-dFSm9jNSCh4VaBf1PlGqt9im/view) or [here2](https://cloud.tsinghua.edu.cn/f/3036fa28168c4fb7a320/?dl=1). Then, please unzip and save them to the corresopinding dir.
 
 ```bash
 cd CokeBert-2.0-latest/data
@@ -118,6 +146,7 @@ wget https://cloud.tsinghua.edu.cn/f/3036fa28168c4fb7a320/?dl=1
 mv 'index.html?dl=1' data.zip
 tar -xvf data.zip finetune
 ```
+
 
 ## Use pre-trained Coke checkpoint
 
