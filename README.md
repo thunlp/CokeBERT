@@ -80,7 +80,10 @@ Download the Knowledge Embedding (including entity and relation to id informatio
 cd data/pretrain
 
 tar zxvf kg_embed.tar.gz
+rm -rf kg_embed.tar.gz
+
 tar zxvf kg_neighbor.tar.gz
+rm -rf kg_neighbor
 
 cd ../..
 ```
