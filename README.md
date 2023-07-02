@@ -71,7 +71,7 @@ mv mergr.idx data/pretrain/$BACKBONE
 Download the backbone model checkpoints from [Huggingface](https://huggingface.co/models), and move them to the corresponding checkpoint folder for pre-training. Note you do not download the `config.json`, since we create new config for `coke`.
 ```bash
 # BACKBONE can be `bert-base-uncased`, `roberta-base`, `bert-large-uncased`, `roberta-large`
-BACKBONE=BACKBONE
+BACKBONE=bert-base-uncased
 
 wget https://huggingface.co/$BACKBONE/resolve/main/vocab.txt -O checkpoint/coke-$BACKBONE/vocab.txt
 wget https://huggingface.co/$BACKBONE/resolve/main/pytorch_model.bin -O checkpoint/coke-$BACKBONE/pytorch_model.bin
@@ -100,7 +100,7 @@ cd ../..
 run this code to get the new `kg_neighbor` data.
 ```bash
 cd data/pretrain
-python3 preprocess_n.py
+python preprocess_n.py
 ```
 
 
@@ -112,8 +112,8 @@ bash run_pretrain.sh
 ```
 You can assign `BACKBONE` (backbone models) and `HOP` (the number of hop) in `run_pretrain.sh`.
 ```bash
-export BACKBONE=BACKBONE
-# BACKBONE can be `bert-base-uncased`, `roberta-base`, etc
+# BACKBONE can be `bert-base-uncased`, `roberta-base`, `bert-large-uncased`, `roberta-large`
+export BACKBONE=bert-base-uncased
 export HOP=2
 export PYTHONPATH=../src:$PYTHONPATH
 
@@ -173,8 +173,6 @@ model = CokeBertModel.from_pretrained('yushengsu/coke-bert-base-uncased-2hop')
 mv outputs/pretrain_coke-$BACKBONE-$HOP/pytorch_model.bin ../checkpoint/coke-$BACKBONE/pytorch_model.bin
 ```
 
-Then start fine-tuning by running the following commands (Refer to `CokeBert-2.0-latest/examples/run_finetune.sh`)
-
 <!--
 FewRel
 Figer
@@ -182,14 +180,20 @@ Open Entity
 TACRED
 -->
 
+Then start fine-tuning by running the following commands (Refer to `CokeBert-2.0-latest/examples/run_finetune.sh`).
 ```bash
-cd CokeBert-2.0-latest/examples
-export BACKBONE=$BACKBONE
-# BACKBONE can be `bert-base-uncased`, `roberta-base`, etc.
+cd CokeBert-2.0-latest
+bash example/run_finetune.sh
+```
+
+The script of `run_finetune.sh`.
+```bash
+# BACKBONE can be `bert-base-uncased`, `roberta-base`, `bert-large-uncased`, `roberta-large`
+export BACKBONE=bert-base-uncased
 export HOP=2
 export PYTHONPATH=../src:$PYTHONPATH
+# DATASET can be `FIGER`, `OpenEntity`, `fewrel`, `tacred`
 DATASET=DATASET
-# $DATASET can be `FIGER`, `OpenEntity`, `fewrel`, `tacred`
 
 python3 run_finetune.py \
             --output_dir outputs \
